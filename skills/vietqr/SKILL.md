@@ -13,7 +13,7 @@ python3 "{baseDir}/scripts/vietqr.py" --bank <bank> --account <account>
 
 Optional flags:
 
-- `--amount <positive_int>`
+- `--amount <positive_int|k_suffix>` (examples: `10000`, `10k`, `25K`, `2.5k`)
 - `--note "<transfer note>"`
 - `--account-name "<account holder>"`
 - `--template <template>` (default: `compact2`)

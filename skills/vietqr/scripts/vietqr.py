@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import re
+from decimal import Decimal, InvalidOperation
 from urllib.parse import urlencode, quote
 
 BASE_URL = "https://img.vietqr.io/image"
@@ -82,11 +83,39 @@ def validate_amount(amount: int) -> int:
     return amount
 
 
+def parse_amount(value: str) -> int:
+    raw = value.strip()
+    if not raw:
+        raise ValueError("Amount is required")
+
+    if raw.isdigit():
+        return validate_amount(int(raw))
+
+    match = re.fullmatch(r"([0-9]+(?:\.[0-9]+)?)\s*([kK])", raw)
+    if not match:
+        raise ValueError("Amount must be a positive integer or use k/K (e.g. 10k, 2.5k)")
+
+    try:
+        scaled = Decimal(match.group(1)) * Decimal("1000")
+    except InvalidOperation as err:
+        raise ValueError("Amount format is invalid") from err
+
+    if scaled != scaled.to_integral_value():
+        raise ValueError("k/K amount must resolve to a whole number")
+
+    return validate_amount(int(scaled))
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate VietQR image URLs.")
     parser.add_argument("--bank", required=True, help="Bank code or bank name alias, e.g. MBBank")
     parser.add_argument("--account", required=True, help="Bank account number")
-    parser.add_argument("--amount", type=int, default=None, help="Transfer amount")
+    parser.add_argument(
+        "--amount",
+        type=parse_amount,
+        default=None,
+        help="Transfer amount (positive integer or k/K shorthand, e.g. 10k, 2.5K)",
+    )
     parser.add_argument("--note", default=None, help="Transfer note / addInfo")
     parser.add_argument("--account-name", default=None, help="Account holder name")
     parser.add_argument("--template", default="compact2", help="QR template, e.g. compact2")

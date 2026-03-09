@@ -1,0 +1,8 @@
+Example:
+
+python3 plugins/vietqr/vietqr.py \
+  --bank MBBank \
+  --account 0123456789 \
+  --amount 50000 \
+  --note "cafe" \
+  --account-name "PHUC LE"

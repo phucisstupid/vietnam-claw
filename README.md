@@ -10,7 +10,7 @@
 - `vn-phone`: stable VN phone normalization/validation
 - `public-holiday-vn`: Vietnam public holiday lookup (no-key public API)
 - `viet-geo`: offline VN province/city normalization + metadata match
-- `weather-vn`: Vietnam weather lookup via no-key Open-Meteo APIs
+- `fuel-price-vn`: Vietnam fuel price snapshot from a public no-key source
 
 ## Best-effort / lower priority
 
@@ -62,10 +62,10 @@ python3 skills/receipt-parser-vn/scripts/receipt_parser.py --text $'CHAO CAFE\nT
 python3 skills/vn-phone/scripts/vn_phone.py "0909 123 456" --json
 python3 skills/public-holiday-vn/scripts/public_holiday_vn.py --year 2026 --from-date 2026-03-10 --limit 5 --json
 python3 skills/viet-geo/scripts/viet_geo.py --query "tp hcm" --json
-python3 skills/weather-vn/scripts/weather_vn.py --location "Da Nang" --days 3 --json
+python3 skills/fuel-price-vn/scripts/fuel_price_vn.py --json
 ```
 
 Notes:
 
 - `viet-geo` works fully offline from bundled public data.
-- `public-holiday-vn` and `weather-vn` require live network access to their no-key public APIs.
+- `public-holiday-vn` and `fuel-price-vn` require live network access to their public sources.

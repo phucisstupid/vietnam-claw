@@ -1,120 +1,54 @@
-# openclaw-vn-commerce
+# vietnam-claw
 
-A Vietnam-focused OpenClaw commerce plugin pack.
+`vietnam-claw` is a small OpenClaw Vietnam skill pack. Clone it into an OpenClaw workspace, or point OpenClaw at its `skills/` directory, and the bundled skills are ready to use.
 
-## Vision
+## Included skills
 
-Bring genuinely useful Vietnam-native workflows into OpenClaw:
+- `vietqr`: build VietQR payment image URLs from bank, account, amount, and note details
+- `shopee-checker`: parse Shopee product URLs into `shop_id`, `item_id`, slug, host, and related metadata
 
-- VietQR payment QR generation
-- Shopee product checking
-- Lazada product checking
-- price comparison
-- deal tracking
-- shop trust quick scans
-
-## Why this exists
-
-Most assistant/plugin ecosystems feel generic and Western-first. This project is meant to be practical for Vietnamese users and small businesses.
-
-## MVP
-
-### 1. VietQR generator
-- build VietQR image URLs from bank + account + amount + transfer note
-- output raw URL or markdown preview
-
-### 2. Shopee checker
-- accept product URL
-- extract core product/shop information
-
-### 3. Lazada checker
-- accept product URL
-- extract core product/shop information
-
-## Repo structure
+## Layout
 
 ```text
-plugins/
+skills/
   vietqr/
-  shopee/
-  lazada/
-shared/
-docs/
-examples/
+    SKILL.md
+    scripts/vietqr.py
+  shopee-checker/
+    SKILL.md
+    scripts/url_parser.py
 ```
 
-## Current status
-
-- [x] project scaffold
-- [x] VietQR module v1 (input validation + common VN bank aliases)
-- [ ] VietQR OpenClaw skill/plugin wrapper
-- [x] Shopee URL parser
-- [ ] Lazada checker
-- [ ] compare command
-
-## Download
+## Clone
 
 ```bash
 git clone https://github.com/phucisstupid/vietnam-claw.git
 cd vietnam-claw
 ```
 
-## Quick start
+## Use with OpenClaw
+
+OpenClaw loads workspace skills from `<workspace>/skills`.
+
+If this repo is the workspace, nothing else is required.
+
+If you keep the repo somewhere else, add its `skills/` directory to `skills.load.extraDirs` in `~/.openclaw/openclaw.json`:
+
+```json
+{
+  "skills": {
+    "load": {
+      "extraDirs": ["/absolute/path/to/vietnam-claw/skills"]
+    }
+  }
+}
+```
+
+Start a new OpenClaw turn after cloning or updating the pack.
+
+## Quick script checks
 
 ```bash
-python3 plugins/vietqr/vietqr.py --bank MBBank --account 0123456789 --amount 50000 --note "cafe"
+python3 skills/vietqr/scripts/vietqr.py --bank VCB --account 0123456789 --amount 150000 --note "thanh toan"
+python3 skills/shopee-checker/scripts/url_parser.py "https://shopee.vn/ao-thun-basic-i.12345678.987654321" --json
 ```
-
-## Local usage
-
-VietQR:
-
-```bash
-python3 plugins/vietqr/vietqr.py --bank VCB --account 0123456789 --amount 150000 --note "thanh toan don hang"
-```
-
-Shopee parser:
-
-```bash
-python3 plugins/shopee/url_parser.py "https://shopee.vn/ao-thun-basic-i.12345678.987654321"
-```
-
-## Example output
-
-```text
-https://img.vietqr.io/image/MBBank-0123456789-compact2.png?amount=50000&addInfo=cafe
-```
-
-## VietQR aliases
-
-Supported aliases include:
-
-- `MBBank` / `mb`
-- `Vietcombank` / `VCB`
-- `Techcombank` / `TCB`
-- `ACB`
-- `TPBank` / `TPB`
-
-Example:
-
-```bash
-python3 plugins/vietqr/vietqr.py --bank VCB --account 0123456789 --amount 150000 --note "thanh toan don hang"
-```
-
-## Shopee URL parser
-
-Parse product URL metadata (shop id, item id, slug when available):
-
-```bash
-python3 plugins/shopee/url_parser.py "https://shopee.vn/ao-thun-basic-i.12345678.987654321"
-```
-
-JSON output:
-
-```bash
-python3 plugins/shopee/url_parser.py "https://shopee.vn/product/12345678/987654321" --json
-```
-
-## Notes
-
-This project starts with public/open endpoints where possible. Marketplace integrations may require careful scraping, caching, and rate limiting.

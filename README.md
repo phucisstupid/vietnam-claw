@@ -7,7 +7,6 @@
 - `vietqr`
 - `bill-split-vn`
 - `receipt-parser-vn`
-- `vn-phone`
 - `public-holiday-vn`
 - `viet-geo`
 - `fuel-price-vn`
@@ -20,7 +19,6 @@
 - `license-plate-vn`
 - `electricity-price-vn`
 - `water-bill-vn`
-- `telecom-vn`
 - `food-calorie-vn`
 
 ## Roadmap
@@ -88,7 +86,6 @@ Start a new OpenClaw turn after cloning or updating the pack.
 python3 skills/vietqr/scripts/vietqr.py --bank VCB --account 0123456789 --amount 150000 --note "thanh toan"
 python3 skills/bill-split-vn/scripts/bill_split.py --total 450000 --people "An,Binh,Chi" --paid "An=450000" --json
 python3 skills/receipt-parser-vn/scripts/receipt_parser.py --text $'CHAO CAFE\nTra dao 35.000\nBanh mi 50.000\nTong cong 85.000' --json
-python3 skills/vn-phone/scripts/vn_phone.py "0909 123 456" --json
 python3 skills/public-holiday-vn/scripts/public_holiday_vn.py --year 2026 --from-date 2026-03-10 --limit 5 --json
 python3 skills/viet-geo/scripts/viet_geo.py --query "tp hcm" --json
 python3 skills/fuel-price-vn/scripts/fuel_price_vn.py --json

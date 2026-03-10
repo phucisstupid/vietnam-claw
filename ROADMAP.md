@@ -5,7 +5,6 @@
 - `vietqr`: stable local VietQR URL builder with VN amount shorthand parsing
 - `bill-split-vn`: stable local split/settlement logic
 - `receipt-parser-vn`: stable text-first receipt parser (heuristic, no OCR)
-- `vn-phone`: stable VN phone normalization and validation
 - `public-holiday-vn`: VN holiday lookup from no-key public holiday API with upcoming filter
 - `viet-geo`: offline VN province/city normalization and metadata matching from bundled public dataset
 - `fuel-price-vn`: VN fuel price snapshot from a public no-key source

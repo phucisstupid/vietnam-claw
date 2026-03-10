@@ -30,7 +30,6 @@ Common usage:
    - `district`
    - `province`
 5. If province/city matching is ambiguous, use the separate `viet-geo` skill for accent-insensitive normalization and province metadata.
-6. If a phone number is present, use the `vn-phone` skill when the user needs normalization.
 
 ## Parsing hints
 

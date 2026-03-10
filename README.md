@@ -60,8 +60,8 @@ Expected agent behavior:
 Clone the repo anywhere, then load it via OpenClaw config:
 
 ```bash
-git clone https://github.com/phucisstupid/vietnam-claw.git
-cd vietnam-claw
+git clone https://github.com/phucisstupid/v-claw.git ~/Documents/vietnam-claw
+cd ~/Documents/vietnam-claw
 ```
 
 Add this to `~/.openclaw/openclaw.json`:

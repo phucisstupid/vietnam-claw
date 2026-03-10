@@ -61,7 +61,6 @@ Clone the repo anywhere, then load it via OpenClaw config:
 
 ```bash
 git clone https://github.com/phucisstupid/v-claw.git ~/v-claw
-cd ~/v-claw
 ```
 
 Add this to `~/.openclaw/openclaw.json`:

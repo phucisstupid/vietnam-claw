@@ -29,6 +29,28 @@ See [ROADMAP.md](ROADMAP.md) for priority direction and best-effort limits.
 
 OpenClaw loads skills from `<workspace>/skills` and from extra directories configured in `~/.openclaw/openclaw.json`.
 
+## Dependencies
+
+Most skills in this pack use bundled **Python 3** scripts, so `python3` should be available on the machine.
+
+Practical dependency summary:
+- **Required for most skills:** `python3`
+- **Required for `gold-price-vn`:** OpenClaw browser tooling / a working browser session, because the source page is client-rendered
+- **Required for live data skills:** network access for public sources/APIs (`public-holiday-vn`, `fuel-price-vn`, `bank-rate-vn`, `interest-rate-vn`, and `gold-price-vn`)
+
+Skills that are primarily local/script-based include:
+- `vietqr`
+- `bill-split-vn`
+- `receipt-parser-vn`
+- `viet-geo`
+- `tax-pit-vn`
+- `net-gross-vn`
+- `address-parser-vn`
+- `license-plate-vn`
+- `electricity-price-vn`
+- `water-bill-vn`
+- `food-calorie-vn`
+
 ### Agent install
 
 If you want another agent to install this pack for you, copy-paste this directly:

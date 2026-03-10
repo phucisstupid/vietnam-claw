@@ -59,11 +59,7 @@ Expected agent behavior:
 
 ### Manual install
 
-#### Option A — clone into the active OpenClaw workspace
-
-If this repo lives directly inside the active OpenClaw workspace and the skills are under `<workspace>/skills`, no extra config is needed.
-
-#### Option B — keep the repo anywhere and load it via config
+Clone the repo anywhere, then load it via OpenClaw config:
 
 ```bash
 git clone https://github.com/phucisstupid/vietnam-claw.git

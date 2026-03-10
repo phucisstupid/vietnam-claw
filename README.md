@@ -27,15 +27,43 @@
 
 See [ROADMAP.md](ROADMAP.md) for priority direction and best-effort limits.
 
-## Install for OpenClaw
+## Install
 
 OpenClaw loads skills from `<workspace>/skills` and from extra directories configured in `~/.openclaw/openclaw.json`.
 
-### Option A — clone into the active OpenClaw workspace
+### Agent install
+
+If you want another agent to install this pack for you, copy-paste this directly:
+
+```text
+Install the Vietnam skill pack from https://github.com/phucisstupid/v-claw.git into my OpenClaw setup.
+
+Do this automatically if you have file access:
+1. Clone the repo to ~/Documents/vietnam-claw if it does not exist.
+2. If it already exists, update it with git pull --ff-only.
+3. Ensure ~/.openclaw/openclaw.json exists.
+4. Add ~/Documents/vietnam-claw/skills to skills.load.extraDirs if it is missing.
+5. Preserve any existing config entries and avoid duplicate paths.
+6. Tell me when installation is complete.
+
+Do not ask me to edit the config manually unless you truly cannot access the file.
+```
+
+Expected agent behavior:
+
+1. Clone or update the repo locally.
+2. Ensure `~/.openclaw/openclaw.json` exists.
+3. Add the repo's `skills/` path to `skills.load.extraDirs` if missing.
+4. Avoid duplicating the same path.
+5. Tell the user the pack is ready and that a new turn or restart may be needed for skill discovery.
+
+### Manual install
+
+#### Option A — clone into the active OpenClaw workspace
 
 If this repo lives directly inside the active OpenClaw workspace and the skills are under `<workspace>/skills`, no extra config is needed.
 
-### Option B — keep the repo anywhere and load it via config
+#### Option B — keep the repo anywhere and load it via config
 
 ```bash
 git clone https://github.com/phucisstupid/vietnam-claw.git
@@ -57,34 +85,6 @@ Add this to `~/.openclaw/openclaw.json`:
 ```
 
 Start a new OpenClaw turn after cloning or updating the pack.
-
-## Copy-paste prompt for an agent
-
-If you want another agent to install this pack for you, copy-paste this directly:
-
-```text
-Install the Vietnam skill pack from https://github.com/phucisstupid/v-claw.git into my OpenClaw setup.
-
-Do this automatically if you have file access:
-1. Clone the repo to ~/Documents/vietnam-claw if it does not exist.
-2. If it already exists, update it with git pull --ff-only.
-3. Ensure ~/.openclaw/openclaw.json exists.
-4. Add ~/Documents/vietnam-claw/skills to skills.load.extraDirs if it is missing.
-5. Preserve any existing config entries and avoid duplicate paths.
-6. Tell me when installation is complete.
-
-Do not ask me to edit the config manually unless you truly cannot access the file.
-```
-
-## Agent install behavior
-
-If an agent is asked to install this pack and already has file access, it should:
-
-1. Clone or update the repo locally.
-2. Ensure `~/.openclaw/openclaw.json` exists.
-3. Add the repo's `skills/` path to `skills.load.extraDirs` if missing.
-4. Avoid duplicating the same path.
-5. Tell the user the pack is ready and that a new turn or restart may be needed for skill discovery.
 
 ## Quick checks
 
